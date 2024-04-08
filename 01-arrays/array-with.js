@@ -21,15 +21,23 @@ const state = [
 const index = 1;
 const newName = 'Green Lantern';
 
-const newState = state.map( (hero, i) => {
+// const newState = state.map( (hero, i) => {
 
-    if( i === index ){
-        hero.name = newName;
-    }
+//     if( i === index ){
+//         hero.name = newName;
+//     }
     
-    return hero;
+//     return {...hero};
 
-});
+// });
+
+const newState = state.with(index, {
+    ...state.at(index),
+    name: newName
+})
+
+state[0].name = 'Volcan Negro';
 
 console.table(newState);
 
+console.log('El último: ', state.at(-1) );
